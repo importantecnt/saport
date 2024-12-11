@@ -35,6 +35,10 @@ Görsel içerik yüklenmiyor  0
 Görsel içerikler yüklenmiyor veya yanlış görünüyor. Özellikle profil resimleri ve galeriler etkileniyor.
 
 
+kullanılacak kütüphanler
+
+pip install transformers torch
+pip install Flask pandas openpyxl
 
 
 
