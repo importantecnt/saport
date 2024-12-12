@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Tahmin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .prediction-card {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e7f3fe;
+            border: 1px solid #b3d4fc;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hata Bildirim Sistemi</h1>
+        <form action="/predict" method="post">
+            <label for="title">Başlık:</label>
+            <input type="text" name="title" id="title" required>
+            <label for="description">Açıklama:</label>
+            <textarea name="description" id="description" rows="4" required></textarea>
+            <button type="submit">Tahmin Et</button>
+        </form>
+        {% if prediction %}
+            <div class="prediction-card">
+                <strong>Tahmin Edilen Etiket:</strong> {{ prediction }}
+            </div>
+        {% endif %}
+        {% if accuracy is not none %}
+            <div class="prediction-card">
+                <strong>Model Doğruluğu:</strong> {{ accuracy }}%
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
